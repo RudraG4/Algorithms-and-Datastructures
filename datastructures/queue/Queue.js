@@ -56,12 +56,3 @@ export default class Queue {
         return this.#stack1.toString();
     }
 }
-
-var eQueue = new Queue(20);
-console.log(eQueue.enqueue(10).toString());
-console.log(eQueue.enqueue(20).toString());
-console.log(eQueue.enqueue(30).toString());
-console.log(eQueue.enqueue(40).toString());
-console.log(eQueue.peek().toString());
-console.log(eQueue.dequeue().toString());
-console.log(eQueue.size);
