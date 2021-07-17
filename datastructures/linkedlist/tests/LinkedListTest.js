@@ -1,4 +1,4 @@
-import LinkedList from "./LinkedList.js";
+import LinkedList from "../LinkedList.js";
 
 var newList = new LinkedList();
 console.log(newList.insertAtHead(5).toString());
@@ -14,7 +14,7 @@ console.log(newList.deleteLast().toString());
 console.log(newList.deleteAt(0).toString());
 console.log(newList.deleteAt(2).toString());
 
-var ofList = LinkedList.of([1, 2, 3, 4, "Asgard", "Loki", "Captain America", ["Vision","Thor", "Hulk"]]);
+var ofList = LinkedList.from([1, 2, 3, 4, "Asgard", "Loki", "Captain America", ["Vision","Thor", "Hulk"]]);
 console.log(ofList.toString());
 console.log(ofList.find('Loki'));
 console.log(ofList.reverse().toString());
