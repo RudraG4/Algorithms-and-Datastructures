@@ -1,4 +1,4 @@
-import LinkedListNode from "./LinkedListNode.js";
+import Node from "./Node.js";
 
 export default class LinkedList {
 
@@ -18,7 +18,7 @@ export default class LinkedList {
      * @returns LinkedList
      */
     insertAtHead(value) {
-        const newNode = new LinkedListNode(value);
+        const newNode = new Node(value);
         if (!this.head) {
             this.head = newNode;
             this.last = this.head;
@@ -45,7 +45,7 @@ export default class LinkedList {
         } else if (index == (this.size - 1)) {
             return this.insertAtLast(value);
         } else {
-            let newNode = new LinkedListNode(value);
+            let newNode = new Node(value);
             let previous, current = this.head, i = 0;
             while (i < index) {
                 previous = current;
@@ -65,7 +65,7 @@ export default class LinkedList {
      * @returns LinkedList
      */
     insertAtLast(value) {
-        const newNode = new LinkedListNode(value);
+        const newNode = new Node(value);
         if (!this.head) {
             this.head = newNode;
         } else {
@@ -78,7 +78,7 @@ export default class LinkedList {
 
     /**
      * Removes a node at the beginning and returns the removed node
-     * @returns {LinkedListNode} LinkedListNode
+     * @returns {Node} Node
      */
     deleteHead() {
         if (!this.head) return null;
@@ -91,7 +91,7 @@ export default class LinkedList {
     /**
      * Removes a node at the specified index and returns a delete node. Throws error if index out of buund
      * @param {number} index 
-     * @returns {LinkedListNode} LinkedListNode
+     * @returns {Node} Node
      */
     deleteAt(index) {
         if (!this.#isWithinBound(index)) {
@@ -113,7 +113,7 @@ export default class LinkedList {
 
     /**
      * Removed last node of the list. Returns deleted last node
-     * @returns {LinkedListNode} LinkedListNode
+     * @returns {Node} Node
      */
     deleteLast() {
         if (this.last == null) return null;
