@@ -1,13 +1,13 @@
 import Node from "./Node.js";
 
 export default class LinkedList {
-  constructor () {
+  constructor() {
     this.head = null;
     this.last = this.head;
     this.size = 0;
   }
 
-  isWithinBound (index) {
+  isWithinBound(index) {
     return (index >= 0 && index < this.size);
   }
 
@@ -16,7 +16,7 @@ export default class LinkedList {
      * @param {*} value
      * @returns LinkedList
      */
-  insertAtHead (value) {
+  insertAtHead(value) {
     const newNode = new Node(value);
     if (!this.head) {
       this.head = newNode;
@@ -35,7 +35,7 @@ export default class LinkedList {
      * @param {number} index
      * @returns LinkedList
      */
-  insertAt (value, index) {
+  insertAt(value, index) {
     if (!this.isWithinBound(index)) {
       throw new Error("Index out of bound");
     }
@@ -63,7 +63,7 @@ export default class LinkedList {
      * @param {*} value
      * @returns LinkedList
      */
-  insertAtLast (value) {
+  insertAtLast(value) {
     const newNode = new Node(value);
     if (!this.head) {
       this.head = newNode;
@@ -79,7 +79,7 @@ export default class LinkedList {
      * Removes a node at the beginning and returns the removed node
      * @returns {Node} Node
      */
-  deleteHead () {
+  deleteHead() {
     if (!this.head) return null;
     const deletedNode = this.head;
     if (!this.head.next) {
@@ -96,7 +96,7 @@ export default class LinkedList {
      * @param {number} index
      * @returns {Node} Node
      */
-  deleteAt (index) {
+  deleteAt(index) {
     if (!this.isWithinBound(index)) {
       throw new Error("Index out of bound");
     }
@@ -120,7 +120,7 @@ export default class LinkedList {
      * Removes last node of the list. Returns deleted last node
      * @returns {Node} Node
      */
-  deleteLast () {
+  deleteLast() {
     if (this.last == null) return null;
     let deletedNode;
     if (this.head === this.last) {
@@ -145,7 +145,7 @@ export default class LinkedList {
      * Removes the first found node whose value matches the input value in the linked list
      * @returns {Node} Node
      */
-  delete (value) {
+  delete(value) {
     if (!this.head) return null;
     let deletedNode = null;
     let current = this.head;
@@ -172,7 +172,7 @@ export default class LinkedList {
   /**
      * Empties the list
      */
-  clearAll () {
+  clearAll() {
     this.head = null;
     this.last = this.head;
     this.size = 0;
@@ -184,7 +184,7 @@ export default class LinkedList {
      * @param {*} value
      * @returns value, index
      */
-  find ({ filter }) {
+  find({ filter }) {
     if (!this.head) return null;
     let current = this.head; let i = 0;
     while (current) {
@@ -203,7 +203,7 @@ export default class LinkedList {
      * @param {number} index
      * @returns {*} value
      */
-  getAt (index) {
+  getAt(index) {
     if (!this.isWithinBound(index)) {
       throw new Error("Index out of bound");
     }
@@ -221,7 +221,7 @@ export default class LinkedList {
      * Returns the value at the head if exists.
      * @returns {any} value
      */
-  getHead () {
+  getHead() {
     if (!this.head) return null;
     return this.head.value;
   }
@@ -230,7 +230,7 @@ export default class LinkedList {
      * Returns the value at the last node if exists.
      * @returns {any} value
      */
-  getLast () {
+  getLast() {
     if (!this.last) return null;
     return this.last.value;
   }
@@ -239,7 +239,7 @@ export default class LinkedList {
      * Reverse the LinkedList
      * @returns LinkedList
      */
-  reverse () {
+  reverse() {
     let current = this.head; let previous = null; let next = null;
     this.last = this.head;
     while (current) {
@@ -257,7 +257,7 @@ export default class LinkedList {
      * @param {*[]} list
      * @returns {LinkedList} LinkedList
      */
-  static from (list) {
+  static from(list) {
     if (!list || Object.prototype.toString.call(list) !== "[object Array]") {
       throw new Error("Expected arguments of type Array");
     }
@@ -266,7 +266,7 @@ export default class LinkedList {
     return newLinkedList;
   }
 
-  toArray () {
+  toArray() {
     let current = this.head;
     const nodes = [];
     while (current) {
@@ -276,7 +276,7 @@ export default class LinkedList {
     return nodes;
   }
 
-  toString () {
+  toString() {
     return this.toArray().map((node) => node.toString()).toString();
   }
 }

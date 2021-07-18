@@ -4,20 +4,20 @@ import LinkedList from "../linkedlist/LinkedList.js";
  * Queue datastructure implemented using LinkedList
  */
 export default class LinkedQueue {
-  constructor (capacity = 20) {
+  constructor(capacity = 20) {
     this.capacity = capacity;
     this.linkedList = new LinkedList();
   }
 
-  isEmpty () {
+  isEmpty() {
     return !this.linkedList.head;
   }
 
-  isFull () {
+  isFull() {
     return this.linkedList.size === this.capacity;
   }
 
-  enqueue (value) {
+  enqueue(value) {
     if (this.isFull()) {
       throw new Error("Queue Overflow");
     }
@@ -26,7 +26,7 @@ export default class LinkedQueue {
     return this;
   }
 
-  dequeue () {
+  dequeue() {
     if (this.isEmpty()) {
       throw new Error("Queue is empty");
     }
@@ -36,11 +36,11 @@ export default class LinkedQueue {
     return null;
   }
 
-  peek () {
+  peek() {
     return this.linkedList.getHead();
   }
 
-  toString () {
+  toString() {
     return this.linkedList.toString();
   }
 }

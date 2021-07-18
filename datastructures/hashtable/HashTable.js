@@ -3,15 +3,15 @@ import LinkedList from "../linkedlist/LinkedList.js";
 export default class HashTable {
     #keyMemory = {};
     #bucket = [];
-    constructor (bucketSize = 32) {
-      this.#bucket = new Array(bucketSize).fill(null).map(function () { return new LinkedList(); });
+    constructor(bucketSize = 32) {
+      this.#bucket = new Array(bucketSize).fill(null).map(function() { return new LinkedList(); });
     }
 
-    #getHashIndex (hashKey) {
+    #getHashIndex(hashKey) {
       return parseInt(Math.abs(hashKey) % this.#bucket.length, 10);
     }
 
-    #isValidKey (key) {
+    #isValidKey(key) {
       return Object.prototype.toString.call(key) === "[object String]";
     }
 
@@ -21,7 +21,7 @@ export default class HashTable {
      * @param {*} value
      * @returns `{ key, value }`
      */
-    put (key, value) {
+    put(key, value) {
       if (!key || !value) { throw new Error("Key/Value should be non-null value."); }
       if (!this.#isValidKey(key)) { throw new Error("Key is expected to be of type String"); }
       const hashKey = this.hash(key);
@@ -43,7 +43,7 @@ export default class HashTable {
      * @param {*} value
      * @returns `{ key, value }` if record with key doesnot exists. null otherwise
      */
-    putIfAbsent (key, value) {
+    putIfAbsent(key, value) {
       if (!key || !value) { throw new Error("Key/Value should be non-null value."); }
       if (!this.#isValidKey(key)) { throw new Error("Key is expected to be of type String"); }
       if (!this.#keyMemory[key]) {
@@ -62,7 +62,7 @@ export default class HashTable {
      * The effect of this call is equivalent to that of calling put(k, v) on the hashtable once for each key k - value v.
      * @param {object} keyValuePair { key: value, key: value .. }
      */
-    putAll (keyValuePair) {
+    putAll(keyValuePair) {
       if (Object.prototype.toString.call(keyValuePair) !== "[object Object]") { throw new Error("Expected arguement of type [object Object]"); }
       for (const key in keyValuePair) {
         if (!this.#isValidKey(key)) { throw new Error("Key is expected to be of type String"); }
@@ -74,7 +74,7 @@ export default class HashTable {
      * Retuns a list of keys in the hashtable.
      * @returns key list
      */
-    keys () {
+    keys() {
       return Object.keys(this.#keyMemory);
     }
 
@@ -82,7 +82,7 @@ export default class HashTable {
      * Returns a list of value in the hashtable.
      * @returns list of values
      */
-    values () {
+    values() {
       return this.#bucket.reduce((accumulator, linkedList) => {
         accumulator = accumulator.concat(linkedList.toArray().map((node) => node.value.value));
         return accumulator;
@@ -94,7 +94,7 @@ export default class HashTable {
      * @param {string} key
      * @returns `{ key, value }`
      */
-    get (key) {
+    get(key) {
       if (!this.#isValidKey(key)) { throw new Error("Key is expected to be of type String"); }
       const hashKey = this.hash(key);
       const hashIndex = this.#getHashIndex(hashKey);
@@ -110,7 +110,7 @@ export default class HashTable {
      * @param {string} key
      * @returns {boolean} true if hastable contains a specified key.
      */
-    containsKey (key) {
+    containsKey(key) {
       if (!this.#isValidKey(key)) { throw new Error("Key is expected to be of type String"); }
       return Object.hasOwnProperty.call(this.#keyMemory, key);
     }
@@ -120,7 +120,7 @@ export default class HashTable {
      * @param {*} value
      * @returns {boolean} true if hastable contains a specified value.
      */
-    containsValue (value) {
+    containsValue(value) {
       return this.values().includes(value);
     }
 
@@ -129,7 +129,7 @@ export default class HashTable {
      * @param {string} key
      * @returns
      */
-    remove (key) {
+    remove(key) {
       if (!this.#isValidKey(key)) { throw new Error("Key is expected to be of type String"); }
       const hashKey = this.hash(key);
       const hashIndex = this.#getHashIndex(hashKey);
@@ -146,7 +146,7 @@ export default class HashTable {
      * @param {*} key
      * @returns
      */
-    hash (key) {
+    hash(key) {
       const fourByteLength = Math.floor(key.length / 4);
       let sum = 0; let mult = 1; let current = 0;
       for (let i = 0; i < fourByteLength; i++) {
@@ -166,7 +166,7 @@ export default class HashTable {
       return sum;
     }
 
-    toString () {
+    toString() {
       return this.#bucket.reduce((accum, linkedList, index) => {
         accum[index] = linkedList.toString();
         return accum;

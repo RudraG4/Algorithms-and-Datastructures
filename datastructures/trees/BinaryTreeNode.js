@@ -1,5 +1,5 @@
 export default class BinaryTreeNode {
-  constructor (value, left = null, right = null) {
+  constructor(value, left = null, right = null) {
     this.left = left;
     this.value = value;
     this.right = right;
@@ -7,31 +7,31 @@ export default class BinaryTreeNode {
     this.height = 0;
   }
 
-  setLeft (node) {
+  setLeft(node) {
     this.left = node;
     node.setParent(this);
   }
 
-  setRight (node) {
+  setRight(node) {
     this.right = node;
     node.setParent(this);
   }
 
-  setParent (node) {
+  setParent(node) {
     this.parent = node;
     this.height = this.parent.height + 1;
   }
 
-  getHeight () {
+  getHeight() {
     if (!this.parent) return 0;
     return this.height;
   }
 
-  isLeaf () {
+  isLeaf() {
     return !this.right && !this.left;
   }
 
-  getSibling () {
+  getSibling() {
     if (!this.parent) return null;
     if (this.parent.left === this) {
       return this.parent.right;
@@ -39,7 +39,7 @@ export default class BinaryTreeNode {
     return this.parent.left;
   }
 
-  insert (value) {
+  insert(value) {
     if (!this.value) {
       this.value = value;
       return this;
@@ -64,10 +64,10 @@ export default class BinaryTreeNode {
   }
 
   /**
-     * Traverse the tree in the order : Left -> Root -> Right recursively
-     * @returns {[]} List of tree nodes in sorted ascending order traversed in Inorder traversal
-     */
-  traverseInOrder () {
+       * Traverse the tree in the order : Left -> Root -> Right recursively
+       * @returns {[]} List of tree nodes in sorted ascending order traversed in Inorder traversal
+       */
+  traverseInOrder() {
     let orderList = [];
 
     if (this.left) { orderList = orderList.concat(this.left.traverseInOrder()); }
@@ -80,10 +80,10 @@ export default class BinaryTreeNode {
   }
 
   /**
-     * Traverse the tree in the order : Root -> Left -> Right recursively
-     * @returns {[]} List of tree nodes traversed in Preorder traversal
-     */
-  traversePreOrder () {
+       * Traverse the tree in the order : Root -> Left -> Right recursively
+       * @returns {[]} List of tree nodes traversed in Preorder traversal
+       */
+  traversePreOrder() {
     let orderList = [];
 
     orderList.push(this.value);
@@ -96,10 +96,10 @@ export default class BinaryTreeNode {
   }
 
   /**
-     * Traverse the tree in the order : Left -> Right -> Root recursively
-     * @returns {[]} List of tree nodes traversed in Postorder traversal
-     */
-  traversePostOrder () {
+       * Traverse the tree in the order : Left -> Right -> Root recursively
+       * @returns {[]} List of tree nodes traversed in Postorder traversal
+       */
+  traversePostOrder() {
     let orderList = [];
 
     if (this.left) { orderList = orderList.concat(this.left.traversePostOrder()); }
@@ -111,7 +111,7 @@ export default class BinaryTreeNode {
     return orderList;
   }
 
-  toString (order = "inorder") {
+  toString(order = "inorder") {
     return order === "preorder" ? this.traversePreOrder() : order === "postorder" ? this.traversePostOrder() : this.traverseInOrder();
   }
 }

@@ -6,22 +6,22 @@ import Stack from "../stack/Stack.js";
 export default class Queue {
   #stack1;
   #stack2;
-  constructor (capacity = 20) {
+  constructor(capacity = 20) {
     this.size = 0;
     this.capacity = capacity;
     this.#stack1 = new Stack(this.capacity);
     this.#stack2 = new Stack(this.capacity);
   }
 
-  isEmpty () {
+  isEmpty() {
     return this.#stack1.isEmpty();
   }
 
-  isFull () {
+  isFull() {
     return this.#stack1.isFull();
   }
 
-  enqueue (value) {
+  enqueue(value) {
     if (this.isFull()) {
       throw new Error("Queue Overflow");
     }
@@ -39,7 +39,7 @@ export default class Queue {
     return this;
   }
 
-  dequeue () {
+  dequeue() {
     if (this.isEmpty()) {
       throw new Error("Queue is empty");
     }
@@ -48,11 +48,11 @@ export default class Queue {
     return dequeuedItem;
   }
 
-  peek () {
+  peek() {
     return this.#stack1.peek();
   }
 
-  toString () {
+  toString() {
     return this.#stack1.toString();
   }
 }

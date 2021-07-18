@@ -1,13 +1,13 @@
 import DoubleNode from "./DoubleNode.js";
 
 export default class DoublyLinkedList {
-  constructor () {
+  constructor() {
     this.head = null;
     this.last = null;
     this.size = 0;
   }
 
-  #isWithinBound (index) {
+  #isWithinBound(index) {
     return (index >= 0 && index < this.size);
   }
 
@@ -16,7 +16,7 @@ export default class DoublyLinkedList {
      * @param {*} value
      * @returns DoublyLinkedList
      */
-  insertAtHead (value) {
+  insertAtHead(value) {
     const newNode = new DoubleNode(value);
     if (!this.head) {
       this.head = newNode;
@@ -36,7 +36,7 @@ export default class DoublyLinkedList {
      * @param {number} index
      * @returns DoublyLinkedList
      */
-  insertAt (value, index) {
+  insertAt(value, index) {
     if (!this.#isWithinBound(index)) {
       throw new Error("Index out of bound");
     }
@@ -66,7 +66,7 @@ export default class DoublyLinkedList {
      * @param {*} value
      * @returns DoublyLinkedList
      */
-  insertAtLast (value) {
+  insertAtLast(value) {
     const newNode = new DoubleNode(value);
     if (!this.head) {
       this.head = newNode;
@@ -83,7 +83,7 @@ export default class DoublyLinkedList {
      * Removes a node at the beginning and returns the removed node
      * @returns {DoubleNode} DoubleNode
      */
-  deleteHead () {
+  deleteHead() {
     if (!this.head) return null;
     const deletedNode = this.head;
     this.head = this.head.next;
@@ -99,7 +99,7 @@ export default class DoublyLinkedList {
      * @param {number} index
      * @returns {DoubleNode} DoubleNode
      */
-  deleteAt (index) {
+  deleteAt(index) {
     if (!this.#isWithinBound(index)) {
       throw new Error("Index out of bound");
     }
@@ -124,7 +124,7 @@ export default class DoublyLinkedList {
      * Removed last node of the list. Returns deleted last node
      * @returns {DoubleNode} DoubleNode
      */
-  deleteLast () {
+  deleteLast() {
     if (this.last === null) return null;
     let deletedNode;
     if (this.head === this.last) {
@@ -147,7 +147,7 @@ export default class DoublyLinkedList {
     return deletedNode;
   }
 
-  delete (value) {
+  delete(value) {
     if (!this.head) return null;
     let deletedNode = null;
     let current = this.head;
@@ -178,7 +178,7 @@ export default class DoublyLinkedList {
   /**
     * Empties the list
     */
-  clearAll () {
+  clearAll() {
     this.head = null;
     this.last = this.head;
     this.size = 0;
@@ -190,7 +190,7 @@ export default class DoublyLinkedList {
      * @param {*} value
      * @returns value, index
      */
-  find ({ filter }) {
+  find({ filter }) {
     if (!this.head) return null;
     let current = this.head; let i = 0;
     while (current) {
@@ -209,7 +209,7 @@ export default class DoublyLinkedList {
      * @param {number} index
      * @returns {*} value
      */
-  getAt (index) {
+  getAt(index) {
     if (!this.#isWithinBound(index)) {
       throw new Error("Index out of bound");
     }
@@ -227,7 +227,7 @@ export default class DoublyLinkedList {
      * Returns the value at the head if exists.
      * @returns {any} value
      */
-  getHead () {
+  getHead() {
     if (!this.head) return null;
     return this.head.value;
   }
@@ -236,7 +236,7 @@ export default class DoublyLinkedList {
      * Returns the value at the last node if exists.
      * @returns {any} value
      */
-  getLast () {
+  getLast() {
     if (!this.last) return null;
     return this.last.value;
   }
@@ -245,7 +245,7 @@ export default class DoublyLinkedList {
      * Reverse the DoublyLinkedList
      * @returns {DoublyLinkedList} DoublyLinkedList
      */
-  reverse () {
+  reverse() {
     let current = this.head; let previous = null; let next = null;
     this.last = this.head;
     while (current) {
@@ -264,7 +264,7 @@ export default class DoublyLinkedList {
      * @param {*[]} list
      * @returns {DoublyLinkedList} DoublyLinkedList
      */
-  static from (list) {
+  static from(list) {
     if (!list || Object.prototype.toString.call(list) !== "[object Array]") {
       throw new Error("Expected arguments of type Array");
     }
@@ -273,7 +273,7 @@ export default class DoublyLinkedList {
     return newLinkedList;
   }
 
-  toArray () {
+  toArray() {
     let current = this.head;
     const nodes = [];
     while (current) {
@@ -283,7 +283,7 @@ export default class DoublyLinkedList {
     return nodes;
   }
 
-  toString () {
+  toString() {
     return this.toArray().map((node) => node.toString()).toString();
   }
 }

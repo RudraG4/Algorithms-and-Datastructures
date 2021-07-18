@@ -3,19 +3,19 @@ export default class Stack {
   #auxMemory = [];
   #stackTop = -1;
   #auxTop = -1;
-  constructor (capacity = 20) {
+  constructor(capacity = 20) {
     this.capacity = capacity;
   }
 
-  isEmpty () {
+  isEmpty() {
     return this.#stackTop === -1;
   }
 
-  isFull () {
+  isFull() {
     return this.#stackTop === (this.capacity - 1);
   }
 
-  push (value) {
+  push(value) {
     if (this.isFull()) {
       throw new Error("Stackoverflow");
     }
@@ -31,7 +31,7 @@ export default class Stack {
     return this;
   }
 
-  pop () {
+  pop() {
     if (this.isEmpty()) {
       throw new Error("Empty stack.");
     }
@@ -41,21 +41,21 @@ export default class Stack {
     return deletedData;
   }
 
-  peek () {
+  peek() {
     if (this.isEmpty()) return null;
     return this.#stackMemory[this.#stackTop];
   }
 
-  getMinimum () {
+  getMinimum() {
     if (this.isEmpty()) return null;
     return this.#auxMemory[this.#auxTop];
   }
 
-  size () {
+  size() {
     return this.#stackMemory.length;
   }
 
-  toString () {
+  toString() {
     return this.#stackMemory.toString();
   }
 }
