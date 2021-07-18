@@ -1,5 +1,8 @@
 import Stack from "../stack/Stack.js";
 
+/**
+ * Queue datastructure implemented using Stack datastructure
+ */
 export default class Queue {
 
     #stack1;

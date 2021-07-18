@@ -186,6 +186,24 @@ export default class LinkedList {
     }
 
     /**
+     * Returns the value at the head if exists.
+     * @returns {any} value
+     */
+    getHead() {
+        if (!this.head) return null;
+        return this.head.value;
+    }
+
+    /**
+     * Returns the value at the last node if exists.
+     * @returns {any} value
+     */
+    getLast() {
+        if (!this.last) return null;
+        return this.last.value;
+    }
+
+    /**
      * Reverse the LinkedList
      * @returns LinkedList
      */
