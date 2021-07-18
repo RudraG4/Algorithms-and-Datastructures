@@ -16,6 +16,6 @@ console.log(newList.deleteAt(2).toString());
 
 const ofList = LinkedList.from([1, 2, 3, 4, "Asgard", "Loki", "Captain America", ["Vision", "Thor", "Hulk"]]);
 console.log(ofList.toString());
-console.log(ofList.find("Loki"));
+console.log(ofList.find({ filter: (node) => node.value === "Loki" }));
 console.log(ofList.reverse().toString());
 console.log(ofList.getAt(0));

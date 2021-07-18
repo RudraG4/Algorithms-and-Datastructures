@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "lint": "eslint ./datastructures/**",
+    "lint": "eslint ./datastructures/** --fix",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Rudra G",

@@ -6,6 +6,6 @@ export default class DoubleNode {
   }
 
   toString () {
-    return this.value;
+    return Object.prototype.toString.call(this.value) === "[object Object]" ? JSON.stringify(this.value) : this.value;
   }
 }

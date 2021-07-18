@@ -5,6 +5,6 @@ export default class Node {
   }
 
   toString () {
-    return this.value;
+    return Object.prototype.toString.call(this.value) === "[object Object]" ? JSON.stringify(this.value) : this.value;
   }
 }

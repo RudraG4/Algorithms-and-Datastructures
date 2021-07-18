@@ -190,11 +190,14 @@ export default class DoublyLinkedList {
      * @param {*} value
      * @returns value, index
      */
-  find (value) {
-    if (!value || !this.head) return null;
+  find ({ filter }) {
+    if (!this.head) return null;
     let current = this.head; let i = 0;
     while (current) {
-      if (current.value === value) return { value: current.value, index: i };
+      if ((Object.prototype.toString.call(filter) === "[object Function]" && filter(current)) ||
+        (current.value === filter)) {
+        return { value: current.value, index: i };
+      }
       current = current.next;
       i++;
     }
@@ -270,13 +273,17 @@ export default class DoublyLinkedList {
     return newLinkedList;
   }
 
-  toString () {
+  toArray () {
     let current = this.head;
     const nodes = [];
     while (current) {
       nodes.push(current);
       current = current.next;
     }
-    return nodes.map((node) => node.toString()).toString();
+    return nodes;
+  }
+
+  toString () {
+    return this.toArray().map((node) => node.toString()).toString();
   }
 }

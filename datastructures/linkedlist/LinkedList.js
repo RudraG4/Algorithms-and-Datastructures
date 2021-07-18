@@ -117,7 +117,7 @@ export default class LinkedList {
   }
 
   /**
-     * Removed last node of the list. Returns deleted last node
+     * Removes last node of the list. Returns deleted last node
      * @returns {Node} Node
      */
   deleteLast () {
@@ -142,6 +142,34 @@ export default class LinkedList {
   }
 
   /**
+     * Removes the first found node whose value matches the input value in the linked list
+     * @returns {Node} Node
+     */
+  delete (value) {
+    if (!this.head) return null;
+    let deletedNode = null;
+    let current = this.head;
+    if (current.value === value && current === this.head) {
+      deletedNode = current;
+      this.head = this.head.next;
+      this.size--;
+    } else {
+      let previous = null;
+      while (current) {
+        if (current.value === value) {
+          deletedNode = current;
+          previous.next = current.next;
+          this.size--;
+          return deletedNode;
+        }
+        previous = current;
+        current = current.next;
+      }
+    }
+    return deletedNode;
+  }
+
+  /**
      * Empties the list
      */
   clearAll () {
@@ -156,11 +184,14 @@ export default class LinkedList {
      * @param {*} value
      * @returns value, index
      */
-  find (value) {
-    if (!value || !this.head) return null;
+  find ({ filter }) {
+    if (!this.head) return null;
     let current = this.head; let i = 0;
     while (current) {
-      if (current.value === value) return { value: current.value, index: i };
+      if ((Object.prototype.toString.call(filter) === "[object Function]" && filter(current)) ||
+        (current.value === filter)) {
+        return { value: current.value, index: i };
+      }
       current = current.next;
       i++;
     }
@@ -235,13 +266,17 @@ export default class LinkedList {
     return newLinkedList;
   }
 
-  toString () {
+  toArray () {
     let current = this.head;
     const nodes = [];
     while (current) {
       nodes.push(current);
       current = current.next;
     }
-    return nodes.map((node) => node.toString()).toString();
+    return nodes;
+  }
+
+  toString () {
+    return this.toArray().map((node) => node.toString()).toString();
   }
 }
