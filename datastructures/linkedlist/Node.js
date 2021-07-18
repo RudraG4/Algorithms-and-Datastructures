@@ -1,10 +1,10 @@
 export default class Node {
-    constructor(value, next = null) {
-        this.value = value;
-        this.next = next;
-    }
+  constructor (value, next = null) {
+    this.value = value;
+    this.next = next;
+  }
 
-    toString() {
-        return this.value;
-    }
+  toString () {
+    return this.value;
+  }
 }

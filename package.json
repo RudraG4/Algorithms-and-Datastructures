@@ -5,8 +5,25 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "lint": "eslint ./datastructures/** --fix",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Rudra G",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^7.16.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.1.0",
+    "standard": "^16.0.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RudraG4/Algorithms-and-Datastructures.git"
+  },
+  "bugs": {
+    "url": "https://github.com/RudraG4/Algorithms-and-Datastructures/issues"
+  },
+  "homepage": "https://github.com/RudraG4/Algorithms-and-Datastructures#readme"
 }
