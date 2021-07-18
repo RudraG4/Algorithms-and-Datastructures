@@ -7,7 +7,7 @@ export default class DoublyLinkedList {
     this.size = 0;
   }
 
-  isWithinBound (index) {
+  #isWithinBound (index) {
     return (index >= 0 && index < this.size);
   }
 
@@ -37,7 +37,7 @@ export default class DoublyLinkedList {
      * @returns DoublyLinkedList
      */
   insertAt (value, index) {
-    if (!this.isWithinBound(index)) {
+    if (!this.#isWithinBound(index)) {
       throw new Error("Index out of bound");
     }
     if (index === 0) {
@@ -100,7 +100,7 @@ export default class DoublyLinkedList {
      * @returns {DoubleNode} DoubleNode
      */
   deleteAt (index) {
-    if (!this.isWithinBound(index)) {
+    if (!this.#isWithinBound(index)) {
       throw new Error("Index out of bound");
     }
     if (index === 0) return this.deleteHead();
@@ -207,7 +207,7 @@ export default class DoublyLinkedList {
      * @returns {*} value
      */
   getAt (index) {
-    if (!this.isWithinBound(index)) {
+    if (!this.#isWithinBound(index)) {
       throw new Error("Index out of bound");
     }
     if (!this.head) return null;

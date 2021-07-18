@@ -5,13 +5,14 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "lint": "eslint ./datastructures/** --fix",
+    "lint": "eslint ./datastructures/**",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Rudra G",
   "license": "ISC",
   "devDependencies": {
-    "eslint": "^7.16.0",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.31.0",
     "eslint-config-standard": "^16.0.3",
     "eslint-plugin-import": "^2.23.4",
     "eslint-plugin-node": "^11.1.0",
