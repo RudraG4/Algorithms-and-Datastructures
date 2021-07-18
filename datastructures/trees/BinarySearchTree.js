@@ -7,10 +7,20 @@ export default class BinarySearchTree {
     this.height = 0;
   }
 
+  /**
+   * Insert a new node to the tree.
+   * @param {*} value
+   * @returns {BinaryTreeNode} node
+   */
   insert (value) {
     return this.root.insert(value);
   }
 
+  /**
+   * Search the tree node for specific value. Returns the node matching the value.
+   * @param {object} { filter: function, value: any }
+   * @returns {BinaryTreeNode} node
+   */
   find ({ filter = null, value = null }) {
     let current = this.root;
     while (current) {
@@ -28,12 +38,33 @@ export default class BinarySearchTree {
     return null;
   }
 
+  /**
+   * Returns the sibling node if exists
+   * @param {*} value
+   * @returns {BinaryTreeNode} node
+   */
   findSibling (value) {
     const node = this.find({ value: value });
     if (node) { return node.getSibling(); }
     return null;
   }
 
+  /**
+   * Returns the distance of a node identified by its value from the root node.
+   * @param {*} value
+   * @returns {number} height
+   */
+  getDistance (value) {
+    const node = this.find({ value: value });
+    if (node) { return node.getHeight(); }
+    return null;
+  }
+
+  /**
+   * Traverse the tree in an order
+   * @param {string} order - inorder, preorder, postorder
+   * @returns {[]} list of node values traversed in a specified order.
+   */
   traverse (order) {
     return this.root.toString(order);
   }
