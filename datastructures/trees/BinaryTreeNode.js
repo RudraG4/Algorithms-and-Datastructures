@@ -44,7 +44,7 @@ export default class BinaryTreeNode {
       this.value = value;
       return this;
     }
-    if ([value].join().localeCompare([this.value].join()) < 0) { // Traverse Left Child
+    if ([value].join().localeCompare([this.value].join()) < 0) { //Traverse Left Child
       if (this.left) {
         return this.left.insert(value);
       }
@@ -52,7 +52,7 @@ export default class BinaryTreeNode {
       this.setLeft(leftNode);
       return this;
     }
-    if ([value].join().localeCompare([this.value].join()) > 0) { // Traverse Right Child
+    if ([value].join().localeCompare([this.value].join()) > 0) { //Traverse Right Child
       if (this.right) {
         return this.right.insert(value);
       }
@@ -60,13 +60,13 @@ export default class BinaryTreeNode {
       this.setRight(rightNode);
       return this;
     }
-    return this; // Return current node if same.
+    return this; //Return current node if same.
   }
 
   /**
-       * Traverse the tree in the order : Left -> Root -> Right recursively
-       * @returns {[]} List of tree nodes in sorted ascending order traversed in Inorder traversal
-       */
+   * Traverse the tree in the order : Left -> Root -> Right recursively
+   * @returns {[]} List of tree nodes in sorted ascending order traversed in Inorder traversal
+   */
   traverseInOrder() {
     let orderList = [];
 
@@ -80,9 +80,9 @@ export default class BinaryTreeNode {
   }
 
   /**
-       * Traverse the tree in the order : Root -> Left -> Right recursively
-       * @returns {[]} List of tree nodes traversed in Preorder traversal
-       */
+   * Traverse the tree in the order : Root -> Left -> Right recursively
+   * @returns {[]} List of tree nodes traversed in Preorder traversal
+   */
   traversePreOrder() {
     let orderList = [];
 
@@ -96,9 +96,9 @@ export default class BinaryTreeNode {
   }
 
   /**
-       * Traverse the tree in the order : Left -> Right -> Root recursively
-       * @returns {[]} List of tree nodes traversed in Postorder traversal
-       */
+   * Traverse the tree in the order : Left -> Right -> Root recursively
+   * @returns {[]} List of tree nodes traversed in Postorder traversal
+   */
   traversePostOrder() {
     let orderList = [];
 
